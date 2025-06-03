@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import DesignNavbar from '../components/DesignNavbar';
-import { Image as ImageIcon, UploadCloud, FileText, Download, Share2, X, Wand2 } from 'lucide-react';
+import { Image as ImageIcon, UploadCloud, FileText, Download, Share2, X, Wand2, Menu } from 'lucide-react';
 import { Home as HomeIcon, UserCircle, BarChart2, CreditCard, DollarSign, Cpu, LogOut } from 'lucide-react';
 
 const TextRoom: React.FC = () => {
@@ -10,6 +10,7 @@ const TextRoom: React.FC = () => {
   const [generatedImages, setGeneratedImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [previewImg, setPreviewImg] = useState<string | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
@@ -75,14 +76,19 @@ const TextRoom: React.FC = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col pt-20 md:pt-24">
       <DesignNavbar />
+      <button className="fixed top-4 left-4 z-50 md:hidden bg-[#232b3a] p-2 rounded-lg shadow-lg" onClick={() => setSidebarOpen(true)} aria-label="Open menu">
+        <Menu size={28} />
+      </button>
       <div className="flex w-full min-h-screen">
         {/* 侧边栏 */}
-        <aside className="hidden md:flex flex-col items-center bg-[#181c23] w-20 py-8 space-y-5 min-h-screen shadow-2xl">
+        <div className={`fixed inset-0 z-40 bg-black/60 transition-opacity duration-300 ${sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} md:hidden`} onClick={() => setSidebarOpen(false)} />
+        <aside className={`fixed top-0 left-0 z-50 bg-[#181c23] w-64 h-full py-8 space-y-5 shadow-2xl flex flex-col items-center transform transition-transform duration-300 md:static md:w-20 md:flex md:flex-col md:items-center ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+          <button className="absolute top-4 right-4 md:hidden text-white text-2xl" onClick={() => setSidebarOpen(false)}>&times;</button>
           {sidebarNav.map(item => (
             <a
               key={item.name}
               href={item.path}
-              className="flex flex-col items-center justify-center text-white hover:text-blue-400 transition-colors duration-200 group"
+              className="flex flex-col items-center justify-center text-white hover:text-blue-400 transition-colors duration-200 group my-2"
             >
               {item.icon}
               <span className="text-[11px] mt-0.5 group-hover:font-bold whitespace-nowrap leading-tight">{item.name}</span>

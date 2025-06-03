@@ -8,6 +8,7 @@ import { INTERIOR_STYLES } from '../data/styles';
 import { Link } from 'react-router-dom';
 import { Marquee } from '../components/magicui/marquee';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
+import { Sofa, BedDouble, HomeIcon, Briefcase, Lamp, Settings, Tv, Zap, Utensils, Bath, HelpCircle } from 'lucide-react';
 
 // Data for sections, you can expand this based on interiorai.com content
 const heroData = {
@@ -423,7 +424,7 @@ const Home: React.FC = () => {
                 {showStepModal === 3 && (
                   <div className="flex flex-col items-center">
                     <h3 className="text-2xl font-bold mb-4 text-white">Render Result</h3>
-                    <video src="/video/demo.mp4" controls className="rounded-xl shadow-lg w-80 h-56 bg-black" />
+                    <video src="/images/demo.mp4" controls className="rounded-xl shadow-lg w-80 h-56 bg-black" />
                     <p className="text-blue-100 mt-4">See how your sketch is transformed into a photorealistic AI rendering!</p>
                   </div>
                 )}
@@ -482,42 +483,39 @@ const Home: React.FC = () => {
       </section>
 
       <section className="py-16 md:py-24 bg-black">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-8 text-white">AI-Enhanced Details, Smarter Design</h2>
+        <div className="container mx-auto px-6 flex flex-col items-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-8 text-white">Room Types Introduction</h2>
           <p className="text-lg md:text-xl text-center text-gray-300 max-w-3xl mx-auto mb-14">
-            Experience next-level interior design with AI: every detail is intelligently optimized, from lighting and color harmony to furniture layout and style matching. Discover how AI brings your dream space to life—effortlessly, beautifully, and uniquely yours.
+            Discover all supported room types for AI design.
           </p>
-          <div className="pb-4">
-            <div className="grid grid-cols-2 gap-4 sm:flex sm:gap-8 min-w-0 sm:min-w-[900px] ml-0 sm:ml-24">
-              {/* Card 1 */}
-              <div className="bg-gray-800 rounded-2xl shadow-xl w-64 sm:w-80 flex-shrink-0 flex flex-col items-center p-4 sm:p-6 hover:scale-105 transition-transform duration-300">
-                <img src="/images/mo.jpg" alt="Modern Living" className="rounded-xl mb-4 w-full h-44 object-cover" />
-                <div className="text-blue-300 font-semibold mb-1">Modern Living</div>
-                <div className="text-white text-lg font-bold mb-2">Intelligent Lighting</div>
-                <div className="text-gray-300 text-sm text-center">AI automatically optimizes lighting and color temperature for a brighter, more comfortable space.</div>
-              </div>
-              {/* Card 2 */}
-              <div className="bg-gray-800 rounded-2xl shadow-xl w-64 sm:w-80 flex-shrink-0 flex flex-col items-center p-4 sm:p-6 hover:scale-105 transition-transform duration-300">
-                <img src="/images/scan.jpg" alt="Scandinavian" className="rounded-xl mb-4 w-full h-44 object-cover" />
-                <div className="text-pink-300 font-semibold mb-1">Scandinavian</div>
-                <div className="text-white text-lg font-bold mb-2">Style Matching</div>
-                <div className="text-gray-300 text-sm text-center">AI recommends the best design style based on your photo or description.</div>
-              </div>
-              {/* Card 3 */}
-              <div className="bg-gray-800 rounded-2xl shadow-xl w-64 sm:w-80 flex-shrink-0 flex flex-col items-center p-4 sm:p-6 hover:scale-105 transition-transform duration-300">
-                <img src="/images/mini.jpg" alt="Minimalist" className="rounded-xl mb-4 w-full h-44 object-cover" />
-                <div className="text-green-300 font-semibold mb-1">Minimalist</div>
-                <div className="text-white text-lg font-bold mb-2">Space Optimization</div>
-                <div className="text-gray-300 text-sm text-center">AI analyzes your room and generates the optimal furniture layout automatically.</div>
-              </div>
-              {/* Card 4 */}
-              <div className="bg-gray-800 rounded-2xl shadow-xl w-64 sm:w-80 flex-shrink-0 flex flex-col items-center p-4 sm:p-6 hover:scale-105 transition-transform duration-300">
-                <img src="/images/rich.jpg" alt="Luxury" className="rounded-xl mb-4 w-full h-44 object-cover" />
-                <div className="text-yellow-300 font-semibold mb-1">Luxury</div>
-                <div className="text-white text-lg font-bold mb-2">Material & Color Harmony</div>
-                <div className="text-gray-300 text-sm text-center">AI selects the best materials and color palettes for a beautiful, cohesive look.</div>
-              </div>
+          <div className="w-full flex flex-col items-center">
+            <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:gap-8 justify-center">
+              {[
+                {icon: <Sofa size={28} className="text-blue-300" />, name: 'Living Room', desc: 'Relax, entertain, and gather.'},
+                {icon: <BedDouble size={28} className="text-purple-300" />, name: 'Bedroom', desc: 'Rest and recharge in comfort.'},
+                {icon: <HomeIcon size={28} className="text-green-300" />, name: "Children's Room", desc: 'Fun, safe, and creative space.'},
+                {icon: <Briefcase size={28} className="text-yellow-300" />, name: 'Study', desc: 'Focus and productivity zone.'},
+                {icon: <Lamp size={28} className="text-pink-300" />, name: 'Balcony', desc: 'Enjoy the outdoors at home.'},
+                {icon: <Settings size={28} className="text-cyan-300" />, name: 'Walk-in Closet', desc: 'Organize your wardrobe.'},
+                {icon: <Tv size={28} className="text-orange-300" />, name: 'Entertainment Room', desc: 'Movies, games, and fun.'},
+                {icon: <Zap size={28} className="text-blue-400" />, name: 'Gym', desc: 'Stay fit and healthy.'},
+                {icon: <Utensils size={28} className="text-red-300" />, name: 'Dining Room', desc: 'Share meals and moments.'},
+                {icon: <Bath size={28} className="text-teal-300" />, name: 'Bathroom', desc: 'Refresh and relax.'},
+                {icon: <Utensils size={28} className="text-yellow-400" />, name: 'Kitchen', desc: 'Cook and create.'},
+                {icon: <HelpCircle size={28} className="text-gray-300" />, name: 'Storage Room', desc: 'Keep things organized.'},
+              ].map((room, i) => (
+                <div key={room.name} className="bg-gray-800 rounded-2xl shadow-xl min-h-[120px] w-full max-w-xs flex flex-col justify-center items-center p-3 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 text-base">
+                  {room.icon}
+                  <div className="text-white font-semibold mt-2 mb-1 text-base text-center">{room.name}</div>
+                  <div className="text-gray-300 text-xs text-center">{room.desc}</div>
+                </div>
+              ))}
             </div>
+          </div>
+          <div className="mt-10 flex justify-center">
+            <a href="/#" className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 text-white font-bold px-8 py-3 rounded-full shadow-lg hover:from-blue-500 hover:to-cyan-500 hover:scale-105 transition-all duration-200 text-lg">
+              View More
+            </a>
           </div>
         </div>
       </section>
